@@ -4,13 +4,13 @@ const app = express();
 
 const { Pool } = require("pg");
 
-const { username, host, database, password } = config.development;
+const { user, host, database, password } = config.development;
 // Create a PostgreSQL pool
 const pool = new Pool({
-  user: username,
-  host: host,
-  database: database,
-  password: password,
+  user,
+  host,
+  database,
+  password,
   port: 5432, // Default PostgreSQL port
 });
 
@@ -36,7 +36,4 @@ async function connectAndQuery() {
 
 connectAndQuery();
 
-const port = config.port || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}.`);
-});
+module.exports = app;

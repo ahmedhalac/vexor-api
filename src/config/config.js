@@ -1,10 +1,9 @@
 require("dotenv").config();
-const { PORT, USER, HOST, DATABASE, PASSWORD } = process.env;
+const { USER, HOST, DATABASE, PASSWORD } = process.env;
 
 module.exports = {
-  port: PORT,
   development: {
-    username: USER,
+    user: USER,
     host: HOST,
     database: DATABASE,
     password: PASSWORD,
