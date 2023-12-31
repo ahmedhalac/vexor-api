@@ -15,7 +15,7 @@ const pool = new Pool({
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello there!");
+  res.json({ message: "Welcome to the Vexor app" });
 });
 
 async function connectAndQuery() {
