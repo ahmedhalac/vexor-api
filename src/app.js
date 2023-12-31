@@ -1,12 +1,12 @@
-const express = require("express");
-const config = require("./config/config");
+import express from "express";
+import { development } from "./config/config.js";
+import pg from "pg";
+
 const app = express();
 
-const { Pool } = require("pg");
-
-const { user, host, database, password } = config.development;
+const { user, host, database, password } = development;
 // Create a PostgreSQL pool
-const pool = new Pool({
+const pool = new pg.Pool({
   user,
   host,
   database,
@@ -36,4 +36,4 @@ async function connectAndQuery() {
 
 connectAndQuery();
 
-module.exports = app;
+export default app;

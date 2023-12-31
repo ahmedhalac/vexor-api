@@ -1,12 +1,12 @@
-require("dotenv").config();
+import { config } from "dotenv";
+config();
+
 const { USER, HOST, DATABASE, PASSWORD } = process.env;
 
-module.exports = {
-  development: {
-    user: USER,
-    host: HOST,
-    database: DATABASE,
-    password: PASSWORD,
-    dialect: "postgres",
-  },
+export const development = {
+  user: USER,
+  host: HOST,
+  database: DATABASE,
+  password: PASSWORD,
+  dialect: "postgres",
 };
