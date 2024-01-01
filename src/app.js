@@ -10,6 +10,7 @@ app.get("/db-test", async (req, res) => {
   try {
     await db.sequelize.authenticate();
     console.log("Connection has been established successfully.");
+    res.end();
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
