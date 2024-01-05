@@ -1,11 +1,10 @@
 const controller = require("../controllers/AuthController");
-const { authPage } = require("../middleware/authMiddleware");
-const emailCheckMiddleware = require("../middleware/emailCheckMiddleware");
+const middleware = require("../middleware");
 
 module.exports = function (app) {
-  app.post("/register", emailCheckMiddleware, controller.register);
+  app.post("/register", middleware.checkExistingEmail, controller.register);
 
-  app.get("/admin", authPage(["admin"]), (req, res) => {
+  app.get("/admin", middleware.roleCheckMiddleware(["admin"]), (req, res) => {
     res.send("This is the admin page");
   });
 };
