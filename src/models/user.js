@@ -1,5 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
+    id: {
+      type: DataTypes.BIGINT,
+      field: "id",
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     first_name: {
       type: DataTypes.STRING(50),
       field: "first_name",
@@ -41,12 +48,12 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         is: /^\+387\d{2}\d{3}\d{3}$/,
       },
-      role: {
-        type: DataTypes.STRING,
-        field: "role",
-        allowNull: false,
-        defaultValue: "user",
-      },
+    },
+    role: {
+      type: DataTypes.STRING,
+      field: "role",
+      allowNull: false,
+      defaultValue: "user",
     },
   });
   return User;

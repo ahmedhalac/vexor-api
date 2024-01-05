@@ -14,11 +14,12 @@ const UserController = {
         city,
         phone_number,
       } = req.body;
+
       const hashedPassword = await bcrypt.hash(password, 10);
 
       let role = UserRoles.USER;
 
-      if (req.body.username === UserRoles.ADMIN) {
+      if (req.body.email === "adminvexor@gmail.com") {
         role = UserRoles.ADMIN;
       }
 
