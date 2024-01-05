@@ -39,15 +39,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: /^\+387\s\d{2}\s\d{3}-\d{3}$/,
+        is: /^\+387\d{2}\d{3}\d{3}$/,
       },
       role: {
-        roles: {
-          type: DataTypes.STRING,
-          field: "role",
-          allowNull: false,
-          defaultValue: "user",
-        },
+        type: DataTypes.STRING,
+        field: "role",
+        allowNull: false,
+        defaultValue: "user",
       },
     },
   });
