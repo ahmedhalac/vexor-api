@@ -57,10 +57,12 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Wrong password" });
     }
 
-    const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY, {
+    const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
       expiresIn: 86400,
     });
 
+    //res.setHeader("Authorization", `Bearer ${token}`);
+    console.log(res.headers);
     res.status(200).json({
       id: user.id,
       username: user.username,
