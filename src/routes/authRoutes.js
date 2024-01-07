@@ -11,4 +11,6 @@ module.exports = function (app) {
       res.send("this is a dashboard page.");
     }
   );
+
+  //how to deal with roles, how to set that admin can see all other roles etc
 };
