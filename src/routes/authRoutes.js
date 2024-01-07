@@ -4,8 +4,11 @@ const middleware = require("../middleware");
 module.exports = function (app) {
   app.post("/register", middleware.checkExistingEmail, controller.register);
   app.post("/login", controller.login);
-  app.get("/dashboard", [middleware.authenticateToken], (req, res) => {
-    res.send("this is a dashboard page.");
-  });
+  app.get(
+    "/dashboard",
+    [middleware.authenticateToken, middleware.checkUserRole(["admin"])],
+    (req, res) => {
+      res.send("this is a dashboard page.");
+    }
+  );
 };
-//middleware.roleCheckMiddleware(["admin"]),

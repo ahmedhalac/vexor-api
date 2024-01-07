@@ -61,8 +61,6 @@ exports.login = async (req, res) => {
       expiresIn: 86400,
     });
 
-    //res.setHeader("Authorization", `Bearer ${token}`);
-    console.log(res.headers);
     res.status(200).json({
       id: user.id,
       username: user.username,

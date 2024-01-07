@@ -1,9 +1,9 @@
-const roleCheckMiddleware = require("./roleCheckMiddleware");
+const checkUserRole = require("./roleCheckMiddleware");
 const checkExistingEmail = require("./emailCheckMiddleware");
 const { authenticateToken } = require("./authMiddleware");
 
 module.exports = {
-  roleCheckMiddleware,
+  checkUserRole,
   checkExistingEmail,
   authenticateToken,
 };

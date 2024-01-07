@@ -1,12 +1,16 @@
-const roleCheckMiddleware = (permissions) => {
-  //check logged in user and then find its role this is not right!!!
-  return (req, res, next) => {
-    const userRole = req.body.role;
-    if (!permissions.includes(userRole)) {
-      return res.status(401).json("You are not authorized!");
+const { User } = require("../models");
+const checkUserRole = (permissions) => {
+  return async (req, res, next) => {
+    try {
+      const user = await User.findByPk(req.id);
+      if (!permissions.includes(user.role)) {
+        return res.status(401).json("You are not authorized!");
+      }
+      next();
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-    next();
   };
 };
 
-module.exports = roleCheckMiddleware;
+module.exports = checkUserRole;
