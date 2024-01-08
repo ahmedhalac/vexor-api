@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
-const UserRoles = require("../enums/roles");
+const Roles = require("../enums/roles");
 const jwt = require("jsonwebtoken");
 
 exports.register = async (req, res) => {
@@ -18,10 +18,10 @@ exports.register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    let role = UserRoles.USER;
+    let role = Roles.USER;
 
     if (req.body.email === "adminvexor@gmail.com") {
-      role = UserRoles.ADMIN;
+      role = Roles.ADMIN;
     }
 
     const newUser = await User.create({

@@ -2,15 +2,13 @@ const controller = require("../controllers/AuthController");
 const middleware = require("../middleware");
 
 module.exports = function (app) {
-  app.post("/register", middleware.checkExistingEmail, controller.register);
-  app.post("/login", controller.login);
+  app.post("/api/register", middleware.checkExistingEmail, controller.register);
+  app.post("/api/login", controller.login);
   app.get(
-    "/dashboard",
-    [middleware.authenticateToken, middleware.checkUserRole(["admin"])],
+    "/api/dashboard",
+    [middleware.authenticateToken, middleware.checkRoutePermissions],
     (req, res) => {
       res.send("this is a dashboard page.");
     }
   );
-
-  //how to deal with roles, how to set that admin can see all other roles etc
 };
