@@ -1,2 +1,2 @@
 First npm install.
-Start project with "npm run dev".
+Start project with "npm run start".
