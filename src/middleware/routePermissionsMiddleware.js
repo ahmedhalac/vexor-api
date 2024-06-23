@@ -19,4 +19,6 @@ const checkRoutePermissions = async (req, res, next) => {
   }
 };
 
-module.exports = checkRoutePermissions;
+module.exports = {
+  checkRoutePermissions,
+};

@@ -1,5 +1,5 @@
-const checkRoutePermissions = require("./routePermissionsMiddleware");
-const checkExistingEmail = require("./emailCheckMiddleware");
+const { checkRoutePermissions } = require("./routePermissionsMiddleware");
+const { checkExistingEmail } = require("./emailCheckMiddleware");
 const { authenticateToken } = require("./authMiddleware");
 
 module.exports = {

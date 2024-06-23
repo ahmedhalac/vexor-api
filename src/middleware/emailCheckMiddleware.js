@@ -19,4 +19,6 @@ const checkExistingEmail = async (req, res, next) => {
   }
 };
 
-module.exports = checkExistingEmail;
+module.exports = {
+  checkExistingEmail,
+};
