@@ -1,7 +1,7 @@
 const controller = require("../controllers/AuthController");
-const { authenticateToken, checkRoutePermissions } = require("../middleware");
+const { authenticateToken, checkRoutePermissions } = require("../middlewares");
 
-module.exports = function (app) {
+const dashboardRoutes = (app) => {
   app.get(
     "/api/dashboard",
     [authenticateToken, checkRoutePermissions],
@@ -10,3 +10,5 @@ module.exports = function (app) {
     }
   );
 };
+
+module.exports = dashboardRoutes;

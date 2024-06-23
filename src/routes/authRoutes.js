@@ -1,7 +1,9 @@
 const { register, login } = require("../controllers/AuthController");
-const { checkExistingEmail } = require("../middleware");
+const { checkExistingEmail } = require("../middlewares");
 
-module.exports = function (app) {
+const authRoutes = (app) => {
   app.post("/api/register", checkExistingEmail, register);
   app.post("/api/login", login);
 };
+
+module.exports = authRoutes;

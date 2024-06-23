@@ -10,10 +10,9 @@ const checkRoutePermissions = async (req, res, next) => {
       routePermissions[currentRoute] &&
       routePermissions[currentRoute].includes(user.role)
     ) {
-      next();
-    } else {
-      return res.status(403).json({ message: "Unauthorized" });
+      return next();
     }
+    return res.status(403).json({ message: "Unauthorized" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
